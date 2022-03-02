@@ -9,9 +9,14 @@ const count = ref(0);
 </script>
 
 <script>
+import CustomModel from './CustomModel.vue'
 export default {
+  components: {
+    CustomModel
+  },  
   data() {
     return {
+      value: '5215',
       obj: {
         a: 3,
         b: 4,
@@ -20,9 +25,8 @@ export default {
   },
   methods: {
     addCount() {
-      // this.count ++;
-      this.obj.a++;
-      console.log("jiji");
+      this.count ++;
+      // this.obj.a++;
     },
   },
   watch: {
@@ -43,6 +47,9 @@ export default {
 
 <template>
   <button type="button" @click="addCount">count is: {{ count }}</button>
+  <h3>自定义v-model测试</h3>
+  {{ value }}
+  <CustomModel v-model:customModel="value" ></CustomModel>
 </template>
 
 <style scoped>
